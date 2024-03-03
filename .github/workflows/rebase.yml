@@ -1,0 +1,17 @@
+name: Rebase Upstream (Nightly)
+on:
+  schedule:
+  - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+    - uses: imba-tjd/rebase-upstream-action@master
+      with:  # all args are optional
+        upstream: bluz71/vim-moonfly-colors
+        branch:   master
